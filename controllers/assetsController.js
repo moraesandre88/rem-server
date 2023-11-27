@@ -14,7 +14,6 @@ const getAllAssets = async (req, res, next) => {
       const filteredAssets = assets.map((asset) => ({
         images: asset.images,
         type: asset.type,
-        street: asset.address.street,
         neighborhood: asset.address.neighborhood,
         state: asset.address.state,
         size: asset.size,
@@ -103,12 +102,11 @@ const createNewAsset = async (req, res, next) => {
 
     //Storing images in Cloudinary and saving urls
     const imagesPublicIds = await imagesStoring(images);
-
     if (!code || !imagesPublicIds) {
       throw createHttpError(500, "Erro no cadastro do imóvel");
     }
 
-    //Creating document
+    //Creating document and sending response
     const newAsset = await Asset.create({
       address,
       size,
@@ -128,11 +126,10 @@ const createNewAsset = async (req, res, next) => {
     });
     if (!newAsset) {
       await deleteImages(imagesPublicIds);
-      throw createHttpError(500, "Erro no cadastro do imóvel")
-    } else {
-      res.status(201).json({ message: "Imóvel criado com sucesso!" });
-      console.log(newAsset);
+      throw createHttpError(500, "Erro no cadastro do imóvel");
     }
+    res.status(201).json({ message: "Imóvel criado com sucesso!" });
+    console.log(newAsset);
   } catch (error) {
     next(error);
   }
