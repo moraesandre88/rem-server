@@ -8,6 +8,7 @@ const connectDB = require("./config/dbConn");
 const corsOptions = require("./config/corsOptions");
 const errorHandler = require("./middleware/errorHandler");
 const verifyJWT = require("./middleware/verifyJWT");
+const cleanCache = require("./middleware/cleanCache");
 const cookieParser = require("cookie-parser");
 const app = express();
 const PORT = process.env.PORT || 3500;
@@ -30,13 +31,16 @@ app.use(cors(corsOptions));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 //built-in middleware for json
-app.use(express.json({limit: "50mb"}));
+app.use(express.json({ limit: "50mb" }));
 
 //built-in middleware for cookies
 app.use(cookieParser());
 
 //serer static files
 app.use("/", express.static(path.join(__dirname, "/public"))); //"/" by default
+
+//clean cachê middleware
+app.use(cleanCache);
 
 app.use("/register", require("./routes/register"));
 app.use("/auth", require("./routes/auth"));

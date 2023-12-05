@@ -272,3 +272,19 @@
 20231118	13:50:30	60a65814-aede-4f2f-81cb-73ff570ccc6b	(401) UnauthorizedError: Acesso não autorizado!
 20231118	13:51:07	98c70391-437b-45d4-ac91-3dd05cec196e	(401) UnauthorizedError: Acesso não autorizado!
 20231118	14:59:44	d23e00aa-85a3-4154-86ce-a1d1b865bda5	(403) ForbiddenError: Acesso proibido!
+20231130	21:40:59	359c9268-7606-48da-b43b-5036ba49f114	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:05	c7a20ee9-dcfe-4e5f-92f9-6a5bfb283446	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:07	fb2d3684-1411-41b7-a729-7f03debc4c5e	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:09	90c427ec-8b56-4ef9-b507-5aabcee90ced	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:11	242d8bef-a2fb-4f84-a6b0-b202736e3ab1	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:12	215b979e-bf61-4400-a737-8a96eb137c1a	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:13	8b8c7fab-3e69-4a0a-810d-89972c0d0834	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:15	2f2344e3-c0a1-400c-8e0a-d145fc6097cb	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:41:46	1793099a-0bf6-4165-96a8-b9df28829063	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	21:46:01	0f35b50a-0f20-495e-89da-2b6906110a8c	(409) ConflictError: Nome já utilizado
+20231130	21:46:11	d956e869-4ffa-47ed-9142-58abb421f81a	(409) ConflictError: Nome já utilizado
+20231130	21:53:55	81284c48-d1b0-495b-83fd-35397167f0da	(409) ConflictError: Nome já utilizado
+20231130	21:57:53	78130a48-a9ed-475e-8aa6-a6f294c3c459	(undefined) TypeError: crypto.randomBytes is not a function
+20231130	23:17:23	6434bf2b-8d68-4fed-8456-5e210d673477	(undefined) Error: secretOrPrivateKey must have a value
+20231130	23:17:35	492fcee5-05b5-4d2d-8e2e-673d0f59db31	(undefined) Error: secretOrPrivateKey must have a value
+20231130	23:24:14	aa6ef4c4-bc7b-4d05-b2bf-a71b0b4de09f	(undefined) Error: secretOrPrivateKey must have a value

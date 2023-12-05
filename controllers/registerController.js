@@ -1,8 +1,7 @@
 const bcrypt = require("bcrypt");
 const createHttpError = require("http-errors");
-const fsPromises = require("fs").promises;
-const path = require("path");
 const User = require("../model/User");
+const tokensGeneration = require("../config/tokensGeneration")
 
 const handleNewUser = async (req, res, next) => {
   try {
@@ -22,12 +21,7 @@ const handleNewUser = async (req, res, next) => {
 
     //Logic for .env file and tokens creation if first user
     if (documentsCount == 0) {
-      const accessTokenSecret = crypto.randomBytes(64).toString("hex");
-      const refreshTokenSecret = crypto.randomBytes(64).toString("hex");
-      await fsPromises.writeFile(
-        path.join(__dirname, "..", ".env"),
-        `ACCESS_TOKEN_SECRET=${accessTokenSecret}\nREFRESH_TOKEN_SECRET=${refreshTokenSecret}\n`
-      );
+      await tokensGeneration();
     }
 
     //Create User
