@@ -124,10 +124,13 @@ const createNewAsset = async (req, res, next) => {
       code,
       published: false,
     });
+
+    //Deleting images from Cloudinary in case of error during new asset's creation
     if (!newAsset) {
       await deleteImages(imagesPublicIds);
       throw createHttpError(500, "Erro no cadastro do imóvel");
     }
+
     res.status(201).json({ message: "Imóvel criado com sucesso!" });
     console.log(newAsset);
   } catch (error) {
@@ -196,15 +199,19 @@ const updateAsset = async (req, res) => {
   }
 };
 
-const deleteAsset = async (req, res) => {
+const deleteAsset = async (req, res, next) => {
   try {
-    if (!req?.params?.id) return res.sendStatus(400);
-    const asset = await Asset.findOne({ _id: req.params.id }).exec();
+    const code = req.params.code;
+
+    //Check if the asset is not already deleted from db (just in case)
+    const asset = await Asset.findOne({ code }).exec();
     if (!asset) return res.sendStatus(204);
-    const deletedAsset = await asset.deleteOne({ _id: req.params.id });
-    res.json(deletedAsset);
-  } catch (err) {
-    console.log(err);
+
+    //Delet asset from db
+    await asset.deleteOne({ code });
+    res.status(204).json({message: "Imóvel deletado"});
+  } catch (error) {
+    next(error);
   }
 };
 

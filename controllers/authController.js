@@ -42,9 +42,11 @@ const handleAuth = async (req, res, next) => {
         process.env.REFRESH_TOKEN_SECRET,
         { expiresIn: "1d" }
       );
+
       let newRefreshTokenArray = !cookies?.jwt
         ? foundUser.refreshToken
         : foundUser.refreshToken.filter((item) => item !== cookies.jwt);
+        
       if (cookies?.jwt) {
         const refreshToken = cookies.jwt;
         const foundToken = await User.findOne({
