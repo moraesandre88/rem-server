@@ -1,3 +1,5 @@
+Link for english version: [README-en]()
+
 # REM-Server
 
 Olá! Seja bem-vindo. Esse é um servidor para um sistema de gerenciamento imobiliário utilizando Node.js, Express.js e MongoDB. Ele faz parte do projeto REM junto ao [REM-System](https://github.com/moraesandre88/rem-system) e o REM-Site, todos em desenvolvimento. 
